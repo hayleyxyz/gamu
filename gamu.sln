@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gamu", "gamu\gamu.csproj", "{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuiGameLib", "YuiGameLib\YuiGameLib.csproj", "{41AEAC6A-5F77-413B-A8E6-11FE996C6855}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Debug|x64.ActiveCfg = Debug|x64
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Debug|x64.Build.0 = Debug|x64
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Debug|x86.ActiveCfg = Debug|x86
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Debug|x86.Build.0 = Debug|x86
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Release|x64.ActiveCfg = Release|x64
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Release|x64.Build.0 = Release|x64
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Release|x86.ActiveCfg = Release|x86
+		{02CE70CD-F89A-452B-89B6-90AF7A69D6D7}.Release|x86.Build.0 = Release|x86
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Debug|x64.ActiveCfg = Debug|x64
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Debug|x64.Build.0 = Debug|x64
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Debug|x86.ActiveCfg = Debug|x86
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Debug|x86.Build.0 = Debug|x86
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Release|x64.ActiveCfg = Release|x64
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Release|x64.Build.0 = Release|x64
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Release|x86.ActiveCfg = Release|x86
+		{41AEAC6A-5F77-413B-A8E6-11FE996C6855}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
