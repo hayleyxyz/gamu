@@ -7,6 +7,13 @@ namespace YuiGameLib.GameObjects {
         public Test(Game game) : base(game) {
         }
 
+        public override void Initialize() {
+            base.Initialize();
+
+            var image = SDL_CS.SDL_image.IMG_Load("Resources/player-1.png");
+            
+        }
+
         public void Draw(IRenderer renderer) {
             var rect = new Graphics.Rect(0, 0, 100, 100);
             renderer.drawRect(

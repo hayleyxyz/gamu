@@ -10,8 +10,10 @@ namespace YuiGameLib.GameObjects {
         public Game Game { get; protected set; }
 
         public GameObject(Game game) {
-
+            this.Initialize();
         }
+
+        public virtual void Initialize() { }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using SDL_CS;
 
 namespace YuiGameLib.Platform.SDL {
     public class SDLGamePlatform {
@@ -15,8 +16,8 @@ namespace YuiGameLib.Platform.SDL {
         public SDLGamePlatform(Game game) {
             this.IsExiting = false;
 
-            var ver = new Native.SDL.SDL_version();
-            Native.SDL.SDL_GetVersion(out ver);
+            var ver = new SDL2.SDL_version();
+            SDL2.SDL_GetVersion(out ver);
 
             var compoundVer = 100 * ver.major + 10 * ver.minor + ver.patch;
 
@@ -26,14 +27,14 @@ namespace YuiGameLib.Platform.SDL {
 
             // Needed so VS can debug the project on Windows
             if (compoundVer >= 205 && Debugger.IsAttached) {
-                Native.SDL.SDL_SetHint("SDL_WINDOWS_DISABLE_THREAD_NAMING", "1");
+                SDL2.SDL_SetHint("SDL_WINDOWS_DISABLE_THREAD_NAMING", "1");
             }
 
-            Native.SDL.SDL_Init(
-                Native.SDL.SDL_INIT_VIDEO |
-                Native.SDL.SDL_INIT_JOYSTICK |
-                Native.SDL.SDL_INIT_GAMECONTROLLER |
-                Native.SDL.SDL_INIT_HAPTIC
+            SDL2.SDL_Init(
+                SDL2.SDL_INIT_VIDEO |
+                SDL2.SDL_INIT_JOYSTICK |
+                SDL2.SDL_INIT_GAMECONTROLLER |
+                SDL2.SDL_INIT_HAPTIC
             );
 
             this.Game = game;
@@ -55,10 +56,10 @@ namespace YuiGameLib.Platform.SDL {
         }
 
         protected void SDLRunLoop() {
-            Native.SDL.SDL_Event ev;
-            
-            while (Native.SDL.SDL_PollEvent(out ev) == 1) {
-                if(ev.type == Native.SDL.SDL_EventType.SDL_QUIT) {
+            SDL2.SDL_Event ev;
+
+            while (SDL2.SDL_PollEvent(out ev) == 1) {
+                if(ev.type == SDL2.SDL_EventType.SDL_QUIT) {
                     this.IsExiting = true;
                 }
             }

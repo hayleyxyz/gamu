@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 #endregion
 
-namespace Native
+namespace SDL_CS
 {
 	public static class SDL_ttf
 	{
@@ -66,7 +66,7 @@ namespace Native
 		public const int TTF_HINTING_MONO =	2;
 		public const int TTF_HINTING_NONE =	3;
 
-		public static void SDL_TTF_VERSION(out SDL.SDL_version X)
+		public static void SDL_TTF_VERSION(out SDL2.SDL_version X)
 		{
 			X.major = SDL_TTF_MAJOR_VERSION;
 			X.minor = SDL_TTF_MINOR_VERSION;
@@ -75,13 +75,13 @@ namespace Native
 
 		[DllImport(nativeLibName, EntryPoint = "TTF_LinkedVersion", CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr INTERNAL_TTF_LinkedVersion();
-		public static SDL.SDL_version TTF_LinkedVersion()
+		public static SDL2.SDL_version TTF_LinkedVersion()
 		{
-			SDL.SDL_version result;
+			SDL2.SDL_version result;
 			IntPtr result_ptr = INTERNAL_TTF_LinkedVersion();
-			result = (SDL.SDL_version) Marshal.PtrToStructure(
+			result = (SDL2.SDL_version) Marshal.PtrToStructure(
 				result_ptr,
-				typeof(SDL.SDL_version)
+				typeof(SDL2.SDL_version)
 			);
 			return result;
 		}
@@ -250,7 +250,7 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.LPStr)]
 				string text,
-			SDL.SDL_Color fg
+			SDL2.SDL_Color fg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -259,7 +259,7 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(LPUtf8StrMarshaler))]
 				string text,
-			SDL.SDL_Color fg
+			SDL2.SDL_Color fg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -268,7 +268,7 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.LPWStr)]
 				string text,
-			SDL.SDL_Color fg
+			SDL2.SDL_Color fg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -276,7 +276,7 @@ namespace Native
 		public static extern IntPtr TTF_RenderGlyph_Solid(
 			IntPtr font,
 			ushort ch,
-			SDL.SDL_Color fg
+			SDL2.SDL_Color fg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -285,8 +285,8 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.LPStr)]
 				string text,
-			SDL.SDL_Color fg,
-			SDL.SDL_Color bg
+			SDL2.SDL_Color fg,
+			SDL2.SDL_Color bg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -295,8 +295,8 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(LPUtf8StrMarshaler))]
 				string text,
-			SDL.SDL_Color fg,
-			SDL.SDL_Color bg
+			SDL2.SDL_Color fg,
+			SDL2.SDL_Color bg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -305,8 +305,8 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.LPWStr)]
 				string text,
-			SDL.SDL_Color fg,
-			SDL.SDL_Color bg
+			SDL2.SDL_Color fg,
+			SDL2.SDL_Color bg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -314,8 +314,8 @@ namespace Native
 		public static extern IntPtr TTF_RenderGlyph_Shaded(
 			IntPtr font,
 			ushort ch,
-			SDL.SDL_Color fg,
-			SDL.SDL_Color bg
+			SDL2.SDL_Color fg,
+			SDL2.SDL_Color bg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -324,7 +324,7 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.LPStr)]
 				string text,
-			SDL.SDL_Color fg
+			SDL2.SDL_Color fg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -333,7 +333,7 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(LPUtf8StrMarshaler))]
 				string text,
-			SDL.SDL_Color fg
+			SDL2.SDL_Color fg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -342,7 +342,7 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.LPWStr)]
 				string text,
-			SDL.SDL_Color fg
+			SDL2.SDL_Color fg
 		);
 
 		/* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -351,7 +351,7 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.LPStr)]
 				string text,
-			SDL.SDL_Color fg,
+			SDL2.SDL_Color fg,
 			uint wrapped
 		);
 
@@ -361,7 +361,7 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(LPUtf8StrMarshaler))]
 				string text,
-			SDL.SDL_Color fg,
+			SDL2.SDL_Color fg,
 			uint wrapped
 		);
 
@@ -371,7 +371,7 @@ namespace Native
 			IntPtr font,
 			[In()] [MarshalAs(UnmanagedType.LPWStr)]
 				string text,
-			SDL.SDL_Color fg,
+			SDL2.SDL_Color fg,
 			uint wrapped
 		);
 
@@ -380,7 +380,7 @@ namespace Native
 		public static extern IntPtr TTF_RenderGlyph_Blended(
 			IntPtr font,
 			ushort ch,
-			SDL.SDL_Color fg
+			SDL2.SDL_Color fg
 		);
 
 		/* font refers to a TTF_Font* */

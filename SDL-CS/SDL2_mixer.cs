@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 #endregion
 
-namespace Native
+namespace SDL_CS
 {
 	public static class SDL_mixer
 	{
@@ -60,7 +60,7 @@ namespace Native
 
 		public static readonly int MIX_DEFAULT_FREQUENCY = 22050;
 		public static readonly ushort MIX_DEFAULT_FORMAT =
-			BitConverter.IsLittleEndian ? SDL.AUDIO_S16LSB : SDL.AUDIO_S16MSB;
+			BitConverter.IsLittleEndian ? SDL2.AUDIO_S16LSB : SDL2.AUDIO_S16MSB;
 		public static readonly int MIX_DEFAULT_CHANNELS = 2;
 		public static readonly byte MIX_MAX_VOLUME = 128;
 
@@ -128,7 +128,7 @@ namespace Native
 			IntPtr b // void*
 		);
 
-		public static void SDL_MIXER_VERSION(out SDL.SDL_version X)
+		public static void SDL_MIXER_VERSION(out SDL2.SDL_version X)
 		{
 			X.major = SDL_MIXER_MAJOR_VERSION;
 			X.minor = SDL_MIXER_MINOR_VERSION;
@@ -137,13 +137,13 @@ namespace Native
 
 		[DllImport(nativeLibName, EntryPoint = "MIX_Linked_Version", CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr INTERNAL_MIX_Linked_Version();
-		public static SDL.SDL_version MIX_Linked_Version()
+		public static SDL2.SDL_version MIX_Linked_Version()
 		{
-			SDL.SDL_version result;
+			SDL2.SDL_version result;
 			IntPtr result_ptr = INTERNAL_MIX_Linked_Version();
-			result = (SDL.SDL_version) Marshal.PtrToStructure(
+			result = (SDL2.SDL_version) Marshal.PtrToStructure(
 				result_ptr,
-				typeof(SDL.SDL_version)
+				typeof(SDL2.SDL_version)
 			);
 			return result;
 		}
@@ -184,7 +184,7 @@ namespace Native
 		/* This is an RWops macro in the C header. */
 		public static IntPtr Mix_LoadWAV(string file)
 		{
-			IntPtr rwops = SDL.INTERNAL_SDL_RWFromFile(file, "rb");
+			IntPtr rwops = SDL2.INTERNAL_SDL_RWFromFile(file, "rb");
 			return Mix_LoadWAV_RW(rwops, 1);
 		}
 

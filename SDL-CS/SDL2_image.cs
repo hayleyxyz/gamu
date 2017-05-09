@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 #endregion
 
-namespace Native
+namespace SDL_CS
 {
 	public static class SDL_image
 	{
@@ -61,7 +61,7 @@ namespace Native
 			IMG_INIT_WEBP =	0x00000008
 		}
 
-		public static void SDL_IMAGE_VERSION(out SDL.SDL_version X)
+		public static void SDL_IMAGE_VERSION(out SDL2.SDL_version X)
 		{
 			X.major = SDL_IMAGE_MAJOR_VERSION;
 			X.minor = SDL_IMAGE_MINOR_VERSION;
@@ -70,13 +70,13 @@ namespace Native
 
 		[DllImport(nativeLibName, EntryPoint = "IMG_LinkedVersion", CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr INTERNAL_IMG_LinkedVersion();
-		public static SDL.SDL_version IMG_LinkedVersion()
+		public static SDL2.SDL_version IMG_LinkedVersion()
 		{
-			SDL.SDL_version result;
+			SDL2.SDL_version result;
 			IntPtr result_ptr = INTERNAL_IMG_LinkedVersion();
-			result = (SDL.SDL_version) Marshal.PtrToStructure(
+			result = (SDL2.SDL_version) Marshal.PtrToStructure(
 				result_ptr,
-				typeof(SDL.SDL_version)
+				typeof(SDL2.SDL_version)
 			);
 			return result;
 		}

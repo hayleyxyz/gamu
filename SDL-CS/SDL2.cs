@@ -31,28 +31,25 @@ using System;
 using System.Runtime.InteropServices;
 #endregion
 
-namespace Native
+namespace SDL_CS
 {
 	/// <summary>
 	/// Entry point for all SDL-related (non-extension) types and methods
 	/// </summary>
-	public static class SDL
+	public static class SDL2
 	{
-        #region SDL2# Variables
+		#region SDL2# Variables
 
-        /// <summary>
-        /// Used by DllImport to load the native library.
-        /// </summary>
-#if PLATFORM_X64
-	        private const string nativeLibName = "x64/SDL2.dll";
-#elif PLATFORM_X86
-            private const string nativeLibName = "x86/SDL2.dll";
-#endif
-        #endregion
+		/// <summary>
+		/// Used by DllImport to load the native library.
+		/// </summary>
+		private const string nativeLibName = "SDL2.dll";
 
-        #region SDL_stdinc.h
+		#endregion
 
-        public static uint SDL_FOURCC(byte A, byte B, byte C, byte D)
+		#region SDL_stdinc.h
+
+		public static uint SDL_FOURCC(byte A, byte B, byte C, byte D)
 		{
 			return (uint) (A | (B << 8) | (C << 16) | (D << 24));
 		}
@@ -71,9 +68,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		internal static extern void SDL_free(IntPtr memblock);
 
-#endregion
+		#endregion
 
-#region SDL_rwops.h
+		#region SDL_rwops.h
 
 		/* Note about SDL2# and Internal RWops:
 		 * These functions are currently not supported for public use.
@@ -103,9 +100,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr SDL_RWFromMem(byte[] mem, int size);
 
-#endregion
+		#endregion
 
-#region SDL_main.h
+		#region SDL_main.h
 
 		/// <summary>
 		/// Use this function to circumvent failure of SDL_Init() when not using SDL_main() as an entry point.
@@ -113,9 +110,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void SDL_SetMainReady();
 
-#endregion
+		#endregion
 
-#region SDL.h
+		#region SDL.h
 
 		public const uint SDL_INIT_TIMER =		0x00000001;
 		public const uint SDL_INIT_AUDIO =		0x00000010;
@@ -194,17 +191,17 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern uint SDL_WasInit(uint flags);
 
-#endregion
+		#endregion
 
-#region SDL_platform.h
+		#region SDL_platform.h
 
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		[return : MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(LPUtf8StrMarshaler), MarshalCookie = LPUtf8StrMarshaler.LeaveAllocated)]
 		public static extern string SDL_GetPlatform();
 
-#endregion
+		#endregion
 
-#region SDL_hints.h
+		#region SDL_hints.h
 
 		public const string SDL_HINT_FRAMEBUFFER_ACCELERATION =
 			"SDL_FRAMEBUFFER_ACCELERATION";
@@ -374,9 +371,9 @@ namespace Native
 			SDL_bool default_value
 		);
 
-#endregion
+		#endregion
 
-#region SDL_error.h
+		#region SDL_error.h
 
 		/// <summary>
 		/// Use this function to clear any previous error message.
@@ -411,9 +408,9 @@ namespace Native
 			__arglist
 		);
 
-#endregion
+		#endregion
 
-#region SDL_log.h
+		#region SDL_log.h
 
 		/* Begin nameless enum SDL_LOG_CATEGORY */
 		public const int SDL_LOG_CATEGORY_APPLICATION = 0;
@@ -682,9 +679,9 @@ namespace Native
 			IntPtr userdata
 		);
 
-#endregion
+		#endregion
 
-#region SDL_messagebox.h
+		#region SDL_messagebox.h
 
 		[Flags]
 		public enum SDL_MessageBoxFlags : uint
@@ -845,9 +842,9 @@ namespace Native
 			IntPtr window
 		);
 
-#endregion
+		#endregion
 
-#region SDL_version.h, SDL_revision.h
+		#region SDL_version.h, SDL_revision.h
 
 		/* Similar to the headers, this is the version we're expecting to be
 		 * running with. You will likely want to check this somewhere in your
@@ -946,9 +943,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_GetRevisionNumber();
 
-#endregion
+		#endregion
 
-#region SDL_video.h
+		#region SDL_video.h
 
 		/* Actually, this is from SDL_blendmode.h */
 		/// <summary>
@@ -1785,9 +1782,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr SDL_GetGrabbedWindow();
 
-#endregion
+		#endregion
 
-#region SDL_render.h
+		#region SDL_render.h
 
 		[Flags]
 		public enum SDL_RendererFlags : uint
@@ -2432,9 +2429,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern SDL_bool SDL_RenderIsClipEnabled(IntPtr renderer);
 
-#endregion
+		#endregion
 
-#region SDL_pixels.h
+		#region SDL_pixels.h
 
 		public static uint SDL_DEFINE_PIXELFOURCC(byte A, byte B, byte C, byte D)
 		{
@@ -2967,9 +2964,9 @@ namespace Native
 			IntPtr palette
 		);
 
-#endregion
+		#endregion
 
-#region SDL_rect.h
+		#region SDL_rect.h
 
 		[StructLayout(LayoutKind.Sequential)]
 		public struct SDL_Point
@@ -3038,9 +3035,9 @@ namespace Native
 			out SDL_Rect result
 		);
 
-#endregion
+		#endregion
 
-#region SDL_surface.h
+		#region SDL_surface.h
 
 		public const uint SDL_SWSURFACE =	0x00000000;
 		public const uint SDL_PREALLOC =	0x00000001;
@@ -3456,9 +3453,9 @@ namespace Native
 			ref SDL_Rect dstrect
 		);
 
-#endregion
+		#endregion
 
-#region SDL_clipboard.h
+		#region SDL_clipboard.h
 
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern SDL_bool SDL_HasClipboardText();
@@ -3473,9 +3470,9 @@ namespace Native
 				string text
 		);
 
-#endregion
+		#endregion
 
-#region SDL_events.h
+		#region SDL_events.h
 
 		/* General keyboard/mouse state definitions. */
 		public const byte SDL_PRESSED =		1;
@@ -4064,9 +4061,9 @@ namespace Native
 		/* Allocate a set of user-defined events */
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern UInt32 SDL_RegisterEvents(int numevents);
-#endregion
+		#endregion
 
-#region SDL_scancode.h
+		#region SDL_scancode.h
 
 		/* Scancodes based off USB keyboard page (0x07) */
 		public enum SDL_Scancode
@@ -4341,9 +4338,9 @@ namespace Native
 			SDL_NUM_SCANCODES = 512
 		}
 
-#endregion
+		#endregion
 
-#region SDL_keycode.h
+		#region SDL_keycode.h
 
 		public const int SDLK_SCANCODE_MASK = (1 << 30);
 		public static SDL_Keycode SDL_SCANCODE_TO_KEYCODE(SDL_Scancode X)
@@ -4647,9 +4644,9 @@ namespace Native
 			KMOD_GUI = (KMOD_LGUI | KMOD_RGUI)
 		}
 
-#endregion
+		#endregion
 
-#region SDL_keyboard.h
+		#region SDL_keyboard.h
 
 		[StructLayout(LayoutKind.Sequential)]
 		public struct SDL_Keysym
@@ -4736,9 +4733,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern SDL_bool SDL_IsScreenKeyboardShown(IntPtr window);
 
-#endregion
+		#endregion
 
-#region SDL_mouse.c
+		#region SDL_mouse.c
 
 		/* Note: SDL_Cursor is a typedef normally. We'll treat it as
 		 * an IntPtr, because C# doesn't do typedefs. Yay!
@@ -4899,9 +4896,9 @@ namespace Native
 		public static readonly UInt32 SDL_BUTTON_X1MASK =	SDL_BUTTON(SDL_BUTTON_X1);
 		public static readonly UInt32 SDL_BUTTON_X2MASK =	SDL_BUTTON(SDL_BUTTON_X2);
 
-#endregion
+		#endregion
 
-#region SDL_touch.h
+		#region SDL_touch.h
 
 		public const uint SDL_TOUCH_MOUSEID = uint.MaxValue;
 
@@ -4938,9 +4935,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr SDL_GetTouchFinger(long touchID, int index);
 
-#endregion
+		#endregion
 
-#region SDL_joystick.h
+		#region SDL_joystick.h
 
 		public const byte SDL_HAT_CENTERED =	0x00;
 		public const byte SDL_HAT_UP =		0x01;
@@ -5091,9 +5088,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr SDL_JoystickFromInstanceID(int joyid);
 
-#endregion
+		#endregion
 
-#region SDL_gamecontroller.h
+		#region SDL_gamecontroller.h
 
 		public enum SDL_GameControllerBindType
 		{
@@ -5294,9 +5291,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr SDL_GameControllerFromInstanceID(int joyid);
 
-#endregion
+		#endregion
 
-#region SDL_haptic.h
+		#region SDL_haptic.h
 
 		/* SDL_HapticEffect type */
 		public const ushort SDL_HAPTIC_CONSTANT =	(1 << 0);
@@ -5626,9 +5623,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_NumHaptics();
 
-#endregion
+		#endregion
 
-#region SDL_audio.h
+		#region SDL_audio.h
 
 		public const ushort SDL_AUDIO_MASK_BITSIZE =	0xFF;
 		public const ushort SDL_AUDIO_MASK_DATATYPE =	(1 << 8);
@@ -5916,9 +5913,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void SDL_ClearQueuedAudio(uint dev);
 
-#endregion
+		#endregion
 
-#region SDL_timer.h
+		#region SDL_timer.h
 
 		/* System timers rely on different OS mechanisms depending on
 		 * which operating system SDL2 is compiled against.
@@ -5963,9 +5960,9 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern SDL_bool SDL_RemoveTimer(int id);
 
-#endregion
+		#endregion
 
-#region SDL_syswm.h
+		#region SDL_syswm.h
 
 		public enum SDL_SYSWM_TYPE
 		{
@@ -6086,9 +6083,9 @@ namespace Native
 			ref SDL_SysWMinfo info
 		);
 
-#endregion
+		#endregion
 
-#region SDL_filesystem.h
+		#region SDL_filesystem.h
 
 		/// <summary>
 		/// Get the path where the application resides.
@@ -6143,9 +6140,9 @@ namespace Native
 			string app
 		);
 
-#endregion
+		#endregion
 
-#region SDL_power.h
+		#region SDL_power.h
 
 		/// <summary>
 		/// The basic state for the system's power supply.
@@ -6175,9 +6172,9 @@ namespace Native
 			out int pct
 		);
 
-#endregion
+		#endregion
 
-#region SDL_cpuinfo.h
+		#region SDL_cpuinfo.h
 
 		/// <summary>
 		/// This function returns the number of CPU cores available.
@@ -6196,6 +6193,6 @@ namespace Native
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_GetSystemRAM();
 
-#endregion
+		#endregion
 	}
 }

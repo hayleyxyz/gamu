@@ -92,13 +92,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\YuiGameLib\YuiGameLib.csproj">
       <Project>{41aeac6a-5f77-413b-a8e6-11fe996c6855}</Project>
       <Name>YuiGameLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\player-1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
