@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gamu", "gamu\gamu.csproj", "{97F675C5-ABE8-49DD-A2FA-60D18E48910F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "SDL", "SDL\SDL.shproj", "{DE7163AA-E6F3-4BA1-A66F-2917D618024C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuiGameLib", "YuiGameLib\YuiGameLib.csproj", "{9FFD2D0D-60E5-4F0D-B37D-8377D41730CA}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		SDL\SDL.projitems*{9ffd2d0d-60e5-4f0d-b37d-8377d41730ca}*SharedItemsImports = 4
+		SDL\SDL.projitems*{de7163aa-e6f3-4ba1-a66f-2917d618024c}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{97F675C5-ABE8-49DD-A2FA-60D18E48910F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F675C5-ABE8-49DD-A2FA-60D18E48910F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F675C5-ABE8-49DD-A2FA-60D18E48910F}.Debug|x64.ActiveCfg = Debug|x64
+		{97F675C5-ABE8-49DD-A2FA-60D18E48910F}.Debug|x64.Build.0 = Debug|x64
+		{97F675C5-ABE8-49DD-A2FA-60D18E48910F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F675C5-ABE8-49DD-A2FA-60D18E48910F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97F675C5-ABE8-49DD-A2FA-60D18E48910F}.Release|x64.ActiveCfg = Release|x64
+		{97F675C5-ABE8-49DD-A2FA-60D18E48910F}.Release|x64.Build.0 = Release|x64
+		{9FFD2D0D-60E5-4F0D-B37D-8377D41730CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FFD2D0D-60E5-4F0D-B37D-8377D41730CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FFD2D0D-60E5-4F0D-B37D-8377D41730CA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9FFD2D0D-60E5-4F0D-B37D-8377D41730CA}.Debug|x64.Build.0 = Debug|Any CPU
+		{9FFD2D0D-60E5-4F0D-B37D-8377D41730CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FFD2D0D-60E5-4F0D-B37D-8377D41730CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FFD2D0D-60E5-4F0D-B37D-8377D41730CA}.Release|x64.ActiveCfg = Release|Any CPU
+		{9FFD2D0D-60E5-4F0D-B37D-8377D41730CA}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
