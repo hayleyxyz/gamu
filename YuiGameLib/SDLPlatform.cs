@@ -4,9 +4,9 @@ using SDL2;
 using log4net;
 
 namespace YuiGameLib {
-    public class Platform {
+    public class SDLPlatform : IPlatform {
 
-        protected ILog Logger = LogManager.GetLogger(typeof(Platform));
+        protected ILog Logger = LogManager.GetLogger(typeof(SDLPlatform));
 
         public bool Quitting { get; protected set; }
 
@@ -14,7 +14,7 @@ namespace YuiGameLib {
 
         protected IntPtr SdlRenderer = IntPtr.Zero;
 
-        public Platform() {
+        public SDLPlatform() {
             // Setup DLL path so the correct SDL libs can be loaded
             this.SetDllPath();
 
@@ -42,7 +42,7 @@ namespace YuiGameLib {
                         case SDL.SDL_EventType.SDL_MOUSEBUTTONDOWN:
                             Logger.Debug("SDL_MOUSEBUTTONDOWN");
 
-                            button = SDLUtils.SdlButtonToMouseButton(ev.button.button);
+                            button = SdlButtonToMouseButton(ev.button.button);
                             if (button != null) {
                                 game.Mouse.SetButtonDown((Input.MouseButton)button);
                             }
@@ -52,7 +52,7 @@ namespace YuiGameLib {
                         case SDL.SDL_EventType.SDL_MOUSEBUTTONUP:
                             Logger.Debug("SDL_MOUSEBUTTONUP");
 
-                            button = SDLUtils.SdlButtonToMouseButton(ev.button.button);
+                            button = SdlButtonToMouseButton(ev.button.button);
                             if (button != null) {
                                 game.Mouse.SetButtonDown((Input.MouseButton)button);
                             }
@@ -60,9 +60,8 @@ namespace YuiGameLib {
                             break;
                     }
                 }
-
-
-                game.RunOnce(renderer);
+                
+                game.RunOnce();
             }
             
             SDL.SDL_Quit();
@@ -77,8 +76,24 @@ namespace YuiGameLib {
             }
         }
 
-        public bool Is64BitProcess() {
+        protected bool Is64BitProcess() {
             return IntPtr.Size == 8;
+        }
+
+        protected static Input.MouseButton? SdlButtonToMouseButton(uint button) {
+            switch (button) {
+                case SDL.SDL_BUTTON_LEFT:
+                    return Input.MouseButton.Left;
+
+                case SDL.SDL_BUTTON_RIGHT:
+                    return Input.MouseButton.Right;
+
+                case SDL.SDL_BUTTON_MIDDLE:
+                    return Input.MouseButton.Middle;
+
+                default:
+                    return null;
+            }
         }
     }
 }

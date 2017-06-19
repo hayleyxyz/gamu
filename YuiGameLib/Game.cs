@@ -14,10 +14,10 @@ namespace YuiGameLib {
             Mouse = new Mouse();
         }
 
-        internal void RunOnce(Renderer renderer) {
+        internal void RunOnce() {
             if(this.Mouse.IsButtonDownOnce(MouseButton.Left)) {
                 Logger.Debug("Mouse.IsButtonDownOnce");
-                renderer.DrawPoint(new Vector2(50, 50));
+                //renderer.DrawPoint(new Vector2(50, 50));
             }
         }
     }
