@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace YuiGameLib {
     public interface IPlatform {
 
+        IRenderer Renderer { get; }
+
         bool Quitting { get; }
 
         void Run(Game game);

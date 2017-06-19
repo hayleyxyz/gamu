@@ -1,15 +1,19 @@
 ﻿using System;
-using SDL2;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace YuiGameLib.Graphics {
-    public class Renderer {
+namespace YuiGameLib.SDL2 {
+    public class Renderer : IRenderer {
 
-        protected IntPtr SdlRenderer;
+        protected IntPtr SdlPointer;
 
-        public Renderer(IntPtr sdlRenderer) {
-            this.SdlRenderer = sdlRenderer;
+        public Renderer(IntPtr sdlPointer) {
+            this.SdlPointer = sdlPointer;
         }
 
+#if false
         public void DrawPoint(Vector2 point) {
             SDL.SDL_SetRenderDrawColor(this.SdlRenderer, 255, 0, 0, 255);
             SDL.SDL_RenderClear(this.SdlRenderer);
@@ -25,6 +29,7 @@ namespace YuiGameLib.Graphics {
             SDL.SDL_RenderFillRect(this.SdlRenderer, ref rect);
             SDL.SDL_RenderPresent(this.SdlRenderer);
         }
+#endif
 
     }
 }

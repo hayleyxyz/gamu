@@ -8,6 +8,8 @@ namespace YuiGameLib {
 
         protected ILog Logger = LogManager.GetLogger(typeof(Game));
 
+        public IPlatform Platform { get; set; }
+
         public Mouse Mouse { get; protected set; }
 
         public Game() {
@@ -17,6 +19,7 @@ namespace YuiGameLib {
         internal void RunOnce() {
             if(this.Mouse.IsButtonDownOnce(MouseButton.Left)) {
                 Logger.Debug("Mouse.IsButtonDownOnce");
+                
                 //renderer.DrawPoint(new Vector2(50, 50));
             }
         }

@@ -3,18 +3,19 @@ using System.IO;
 using SDL2;
 using log4net;
 
-namespace YuiGameLib {
-    public class SDLPlatform : IPlatform {
+namespace YuiGameLib.SDL2 {
+    public class Platform : IPlatform {
 
-        protected ILog Logger = LogManager.GetLogger(typeof(SDLPlatform));
+        protected ILog Logger = LogManager.GetLogger(typeof(Platform));
+
+        public IRenderer Renderer { get; protected set; }
 
         public bool Quitting { get; protected set; }
 
         protected IntPtr SdlWindow = IntPtr.Zero;
-
         protected IntPtr SdlRenderer = IntPtr.Zero;
 
-        public SDLPlatform() {
+        public Platform() {
             // Setup DLL path so the correct SDL libs can be loaded
             this.SetDllPath();
 
@@ -24,11 +25,12 @@ namespace YuiGameLib {
 
             this.SdlWindow = SDL.SDL_CreateWindow("sdl", SDL.SDL_WINDOWPOS_UNDEFINED, SDL.SDL_WINDOWPOS_UNDEFINED, 640, 640, SDL.SDL_WindowFlags.SDL_WINDOW_SHOWN);
             this.SdlRenderer = SDL.SDL_CreateRenderer(this.SdlWindow, -1, SDL.SDL_RendererFlags.SDL_RENDERER_ACCELERATED);
+
+            this.Renderer = new Renderer(this.SdlRenderer);
         }
 
         public void Run(Game game) {
-            var renderer = new Graphics.Renderer(this.SdlRenderer);
-
+            
             while(!Quitting) {
                 var ev = new SDL.SDL_Event();
                 Input.MouseButton? button = null;
