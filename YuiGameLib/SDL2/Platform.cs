@@ -30,7 +30,8 @@ namespace YuiGameLib.SDL2 {
         }
 
         public void Run(Game game) {
-            
+            game.Platform = this;
+
             while(!Quitting) {
                 var ev = new SDL.SDL_Event();
                 Input.MouseButton? button = null;
@@ -64,6 +65,9 @@ namespace YuiGameLib.SDL2 {
                 }
                 
                 game.RunOnce();
+
+                // Flip buffers
+                SDL.SDL_RenderPresent(this.SdlRenderer);
             }
             
             SDL.SDL_Quit();

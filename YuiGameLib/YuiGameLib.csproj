@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game.cs" />
+    <Compile Include="Graphics\IImage.cs" />
+    <Compile Include="Graphics\Rect.cs" />
     <Compile Include="Graphics\RGBA.cs" />
     <Compile Include="Input\Keyboard.cs" />
     <Compile Include="Input\Mouse.cs" />
@@ -52,6 +54,7 @@
     <Compile Include="IPlatform.cs" />
     <Compile Include="IRenderer.cs" />
     <Compile Include="NativeMethods.cs" />
+    <Compile Include="SDL2\Image.cs" />
     <Compile Include="SDL2\Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SDL2\Renderer.cs" />

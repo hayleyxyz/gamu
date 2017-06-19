@@ -1,10 +1,11 @@
 ﻿using System;
 using log4net;
+
 using YuiGameLib.Graphics;
 using YuiGameLib.Input;
 
 namespace YuiGameLib {
-    public class Game {
+    public abstract class Game {
 
         protected ILog Logger = LogManager.GetLogger(typeof(Game));
 
@@ -16,12 +17,10 @@ namespace YuiGameLib {
             Mouse = new Mouse();
         }
 
-        internal void RunOnce() {
-            if(this.Mouse.IsButtonDownOnce(MouseButton.Left)) {
-                Logger.Debug("Mouse.IsButtonDownOnce");
-                
-                //renderer.DrawPoint(new Vector2(50, 50));
-            }
+        public abstract void LoadContent();
+
+        public virtual void RunOnce() {
+            
         }
     }
 }

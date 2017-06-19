@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SDL2;
+
+using YuiGameLib.Graphics;
 
 namespace YuiGameLib.SDL2 {
     public class Renderer : IRenderer {
@@ -13,10 +12,25 @@ namespace YuiGameLib.SDL2 {
             this.SdlPointer = sdlPointer;
         }
 
+        protected void SetDrawColour(RGBA colour) {
+            SDL.SDL_SetRenderDrawColor(this.SdlPointer, (byte)colour.Red, (byte)colour.Green, (byte)colour.Blue, (byte)colour.Alpha);
+        }
+
+        public void Clear(RGBA colour) {
+            this.SetDrawColour(colour);
+            SDL.SDL_RenderClear(this.SdlPointer);
+        }
+
+        public IImage LoadImage(string filePath) {
+            return null;
+        }
+
+
+
 #if false
         public void DrawPoint(Vector2 point) {
             SDL.SDL_SetRenderDrawColor(this.SdlRenderer, 255, 0, 0, 255);
-            SDL.SDL_RenderClear(this.SdlRenderer);
+            
 
             var rect = new SDL.SDL_Rect() {
                 x = 50,
@@ -27,7 +41,7 @@ namespace YuiGameLib.SDL2 {
 
             SDL.SDL_SetRenderDrawColor(this.SdlRenderer, 0, 0, 255, 255);
             SDL.SDL_RenderFillRect(this.SdlRenderer, ref rect);
-            SDL.SDL_RenderPresent(this.SdlRenderer);
+            
         }
 #endif
 
